@@ -1,0 +1,59 @@
+{
+  "overall_accuracy": 0.9981981981981982,
+  "binary_accuracy": 1.0,
+  "ttf_mae_seconds": 0.7282355438271263,
+  "per_horizon": {
+    "healthy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 510
+    },
+    "degraded_20s": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 168
+    },
+    "degraded_10s": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 652
+    },
+    "degraded_5s": {
+      "precision": 0.9940357852882704,
+      "recall": 1.0,
+      "f1": 0.9970089730807578,
+      "count": 1000
+    },
+    "failed_crash": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 250
+    },
+    "failed_slow": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 250
+    },
+    "failed_byzantine": {
+      "precision": 1.0,
+      "recall": 0.976,
+      "f1": 0.9878542510121457,
+      "count": 250
+    },
+    "failed_partition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "count": 250
+    }
+  },
+  "early_warning": {
+    "precision": 0.9967141292441951,
+    "recall": 0.999999999999945
+  }
+}

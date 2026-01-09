@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-01-09T10:06:52.913482",
+  "description": "Synthetic test data based on Google Cluster and LANL statistics",
+  "files": {
+    "machine_events.csv": "Machine add/remove/failure events",
+    "task_events.csv": "Task lifecycle events",
+    "node_metrics.csv": "Node health metrics time series (best for testing)"
+  },
+  "statistics": {
+    "num_machines": 100,
+    "num_tasks": 10000,
+    "failure_rate": 0.05,
+    "duration_hours": 168
+  }
+}

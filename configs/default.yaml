@@ -1,0 +1,269 @@
+# Neural Consensus Configuration
+# Complete configuration for simulation, Raft, and neural detector
+
+#===============================================================================
+# SIMULATION SETTINGS
+#===============================================================================
+simulation:
+  num_nodes: 5
+  tick_interval_ms: 10
+  
+  # Network characteristics
+  message_delay_ms:
+    min: 5
+    max: 50
+  message_loss_probability: 0.01
+  message_duplicate_probability: 0.001
+  out_of_order_probability: 0.01
+  
+  # Random seed for reproducibility
+  random_seed: 42
+
+#===============================================================================
+# RAFT PROTOCOL SETTINGS
+#===============================================================================
+raft:
+  # Timing (ms)
+  heartbeat_interval_ms: 150
+  election_timeout_ms:
+    min: 300
+    max: 500
+  
+  # Log management
+  max_log_entries_per_append: 100
+  snapshot_threshold: 1000
+
+#===============================================================================
+# TRADITIONAL FAILURE DETECTOR (BASELINE)
+#===============================================================================
+timeout_detector:
+  timeout_ms: 500
+  check_interval_ms: 100
+
+# Phi Accrual Failure Detector (advanced baseline)
+phi_detector:
+  threshold: 8.0
+  max_sample_size: 1000
+  min_std_deviation_ms: 10
+  acceptable_heartbeat_pause_ms: 0
+  first_heartbeat_estimate_ms: 500
+
+#===============================================================================
+# NEURAL FAILURE DETECTOR
+#===============================================================================
+neural_detector:
+  enabled: true
+  model_path: "models/detector.pt"
+  
+  # Feature extraction
+  window_size: 20          # Observations per window
+  feature_dim: 16          # Features per observation
+  collection_interval_ms: 100
+  
+  # LSTM Autoencoder architecture
+  encoder:
+    hidden_size: 64
+    latent_size: 32
+    num_layers: 2
+    dropout: 0.1
+    bidirectional: false
+  
+  # Classifier architecture
+  classifier:
+    hidden_sizes: [64, 32]
+    num_classes: 6         # healthy, pre_failure, crash, byzantine, partition, slow
+    dropout: 0.2
+  
+  # Detection thresholds
+  anomaly_threshold: 0.5   # Reconstruction error threshold
+  confidence_threshold: 0.7 # Classification confidence threshold
+  
+  # Training configuration
+  training:
+    batch_size: 64
+    learning_rate: 0.001
+    epochs: 100
+    early_stopping_patience: 10
+    validation_split: 0.2
+    
+    # Loss weights
+    reconstruction_weight: 1.0
+    classification_weight: 1.0
+    
+    # Regularization
+    weight_decay: 0.00001
+    gradient_clip: 1.0
+    
+    # Learning rate scheduling
+    lr_scheduler: "plateau"  # plateau, cosine, none
+    lr_patience: 5
+    lr_factor: 0.5
+
+#===============================================================================
+# TRANSFER LEARNING
+#===============================================================================
+transfer:
+  pretrained_model: null   # Path to pretrained model
+  freeze_encoder: true     # Freeze encoder during fine-tuning
+  fine_tune_samples: 100   # Minimum samples for fine-tuning
+  fine_tune_epochs: 20
+  fine_tune_lr: 0.0001
+  domain_adaptation: true  # Use domain adapter
+
+#===============================================================================
+# DATA COLLECTION
+#===============================================================================
+data:
+  output_dir: "data/datasets"
+  observations_per_scenario: 10000
+  
+  # Scenarios to generate
+  scenarios:
+    - name: healthy
+      duration_ms: 60000
+      
+    - name: single_crash
+      duration_ms: 30000
+      failure_time_ms: 15000
+      failure_type: crash
+      
+    - name: leader_crash
+      duration_ms: 30000
+      failure_time_ms: 10000
+      target: leader
+      
+    - name: minority_crash
+      duration_ms: 30000
+      failure_time_ms: 15000
+      num_failures: 2
+      
+    - name: byzantine_lying
+      duration_ms: 30000
+      failure_time_ms: 10000
+      failure_type: byzantine_lying
+      
+    - name: slowdown
+      duration_ms: 30000
+      failure_time_ms: 10000
+      failure_type: slow
+      slowdown_factor: 5.0
+      
+    - name: network_partition
+      duration_ms: 30000
+      partition_time_ms: 10000
+      heal_time_ms: 20000
+      
+    - name: cascading_failure
+      duration_ms: 30000
+      start_time_ms: 10000
+      interval_ms: 3000
+      num_failures: 2
+
+#===============================================================================
+# FAILURE INJECTION (for training data generation)
+#===============================================================================
+failures:
+  crash:
+    sudden: true
+    recovery_probability: 0.0
+    
+  byzantine:
+    types:
+      - lying
+      - selective
+      - equivocating
+    detection_difficulty: medium
+    
+  partition:
+    duration_ms:
+      min: 5000
+      max: 20000
+    heal_probability: 0.8
+    
+  slowdown:
+    latency_multiplier:
+      min: 2.0
+      max: 10.0
+    gradual: true
+    ramp_time_ms: 2000
+
+#===============================================================================
+# LABELING
+#===============================================================================
+labeling:
+  strategy: "pre_failure"  # ground_truth, pre_failure, symptom_based
+  pre_failure_window_ms: 5000
+  
+  symptom_thresholds:
+    latency_ratio: 2.0
+    jitter_ratio: 3.0
+    drop_rate: 0.1
+    missed_heartbeats: 3
+
+#===============================================================================
+# EXPERIMENTS
+#===============================================================================
+experiments:
+  output_dir: "results"
+  num_trials: 10
+  
+  # Experiment 1: Detection speed
+  detection_speed:
+    failure_types: [crash, byzantine, partition, slow]
+    num_failures_per_type: 100
+    measure_time_to_detection: true
+    
+  # Experiment 2: False positive rate
+  false_positives:
+    duration_minutes: 60
+    network_jitter_levels:
+      low: {latency_std: 5}
+      medium: {latency_std: 20}
+      high: {latency_std: 50}
+    
+  # Experiment 3: Classification accuracy
+  classification:
+    test_samples_per_class: 500
+    compute_confusion_matrix: true
+    
+  # Experiment 4: Transfer learning
+  transfer:
+    source_environments:
+      - {num_nodes: 5, latency_ms: 10, name: "small_fast"}
+      - {num_nodes: 10, latency_ms: 50, name: "medium_normal"}
+    target_environments:
+      - {num_nodes: 7, latency_ms: 30, name: "small_medium"}
+      - {num_nodes: 20, latency_ms: 100, name: "large_slow"}
+    fine_tune_samples: [0, 10, 50, 100, 500]
+    
+  # Experiment 5: End-to-end consensus performance
+  end_to_end:
+    duration_minutes: 30
+    request_rate: 100  # requests per second
+    measure:
+      - throughput
+      - latency_p50
+      - latency_p99
+      - availability
+      - recovery_time
+
+#===============================================================================
+# LOGGING
+#===============================================================================
+logging:
+  level: INFO
+  file: "logs/neural_consensus.log"
+  console: true
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level:<7} | {name}:{function}:{line} | {message}"
+  rotation: "10 MB"
+  retention: "7 days"
+
+#===============================================================================
+# PATHS
+#===============================================================================
+paths:
+  models: "models"
+  data: "data"
+  results: "results"
+  logs: "logs"
+  checkpoints: "models/checkpoints"

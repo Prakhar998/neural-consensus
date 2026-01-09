@@ -1,0 +1,15 @@
+{
+  "dataset": "Synthetic Cluster Data",
+  "num_sequences": 200,
+  "accuracy": 0.0,
+  "binary_accuracy": 0.04,
+  "precision": 0.04,
+  "recall": 1.0,
+  "f1": 0.07692307692307693,
+  "confusion": {
+    "tp": 8,
+    "tn": 0,
+    "fp": 192,
+    "fn": 0
+  }
+}

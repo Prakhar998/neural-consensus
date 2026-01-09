@@ -1,0 +1,17 @@
+{
+  "dataset": "Aligned Test Data",
+  "num_sequences": 200,
+  "accuracy": 0.965,
+  "binary_accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "confusion": {
+    "tp": 100,
+    "tn": 100,
+    "fp": 0,
+    "fn": 0
+  },
+  "avg_confidence": 0.4597921371459961,
+  "avg_ttf_prediction": 17.07767105102539
+}

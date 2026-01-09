@@ -1,0 +1,21 @@
+{
+  "dataset": "Backblaze Hard Drive Data",
+  "description": "Real-world hard drive failure data with SMART attributes",
+  "source": "https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data",
+  "num_sequences": 100,
+  "accuracy": 0.96,
+  "binary_accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "false_positive_rate": 0.0,
+  "false_negative_rate": 0.0,
+  "confusion": {
+    "tp": 4,
+    "tn": 96,
+    "fp": 0,
+    "fn": 0
+  },
+  "avg_confidence": 0.46425843238830566,
+  "avg_ttf_prediction": 28.797447204589844
+}
