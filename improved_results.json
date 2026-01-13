@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-01-13T14:25:38.186009",
+  "improvements": [
+    "Residual connections",
+    "Attention mechanism",
+    "Focal loss for class imbalance",
+    "Mixup data augmentation",
+    "Adam optimizer with weight decay",
+    "Ensemble of multiple architectures"
+  ],
+  "uci_ai4i": {
+    "ProactiveGuard (Improved)": {
+      "accuracy": 0.864,
+      "macro_f1": 0.637329241070096,
+      "weighted_f1": 0.8703459135223319
+    },
+    "ProactiveGuard (Ensemble)": {
+      "accuracy": 0.913,
+      "macro_f1": 0.6595735929514488,
+      "weighted_f1": 0.9028680440065913
+    },
+    "MLP (sklearn)": {
+      "accuracy": 0.903,
+      "macro_f1": 0.6219705061795054,
+      "weighted_f1": 0.8882015616609082
+    },
+    "Random Forest": {
+      "accuracy": 0.905,
+      "macro_f1": 0.6502433389404841,
+      "weighted_f1": 0.8987752402365178
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.917,
+      "macro_f1": 0.6744522287589668,
+      "weighted_f1": 0.9130447722098167
+    }
+  },
+  "nasa_cmapss": {
+    "ProactiveGuard (Improved)": {
+      "accuracy": 0.6851305334846765,
+      "macro_f1": 0.6140648692501071,
+      "weighted_f1": 0.6658683090272262
+    },
+    "ProactiveGuard (Ensemble)": {
+      "accuracy": 0.6985244040862656,
+      "macro_f1": 0.6288423403848363,
+      "weighted_f1": 0.6835429459166508
+    },
+    "MLP (sklearn)": {
+      "accuracy": 0.6808172531214529,
+      "macro_f1": 0.5834678753310961,
+      "weighted_f1": 0.6556000241772296
+    },
+    "Random Forest": {
+      "accuracy": 0.6812712826333712,
+      "macro_f1": 0.5974825772276353,
+      "weighted_f1": 0.6545865494818631
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.6724177071509648,
+      "macro_f1": 0.5861586002091652,
+      "weighted_f1": 0.6491379817455485
+    }
+  }
+}
