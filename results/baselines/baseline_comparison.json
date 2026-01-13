@@ -1,0 +1,120 @@
+{
+  "ProactiveGuard": {
+    "accuracy": 1.0,
+    "binary_accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0,
+    "confusion": {
+      "tp": 148,
+      "tn": 150,
+      "fp": 0,
+      "fn": 0
+    },
+    "per_class_f1": {
+      "healthy": 1.0,
+      "failed_crash": 1.0,
+      "failed_slow": 1.0,
+      "failed_byzantine": 1.0,
+      "failed_partition": 1.0
+    },
+    "inference_time_ms": 1.9848362711451997
+  },
+  "Threshold-based": {
+    "accuracy": 0.0,
+    "binary_accuracy": 0.3724832214765101,
+    "precision": 0.42528735632183906,
+    "recall": 0.75,
+    "f1": 0.5427872860635696,
+    "false_positive_rate": 1.0,
+    "false_negative_rate": 0.25,
+    "confusion": {
+      "tp": 111,
+      "tn": 0,
+      "fp": 150,
+      "fn": 37
+    },
+    "per_class_f1": {
+      "healthy": 0.0,
+      "degraded_10s": 0.0,
+      "failed_crash": 0.0,
+      "failed_slow": 0.0,
+      "failed_byzantine": 0.0,
+      "failed_partition": 0.0
+    },
+    "inference_time_ms": 0.0014289113499174181
+  },
+  "Phi Accrual": {
+    "accuracy": 0.5033557046979866,
+    "binary_accuracy": 0.5033557046979866,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 1.0,
+    "confusion": {
+      "tp": 0,
+      "tn": 150,
+      "fp": 0,
+      "fn": 148
+    },
+    "per_class_f1": {
+      "healthy": 0.6696428571428572,
+      "failed_crash": 0.0,
+      "failed_slow": 0.0,
+      "failed_byzantine": 0.0,
+      "failed_partition": 0.0
+    },
+    "inference_time_ms": 0.0006376496897447829
+  },
+  "Random Forest": {
+    "accuracy": 0.9530201342281879,
+    "binary_accuracy": 0.9530201342281879,
+    "precision": 0.9135802469135802,
+    "recall": 1.0,
+    "f1": 0.9548387096774192,
+    "false_positive_rate": 0.09333333333333334,
+    "false_negative_rate": 0.0,
+    "confusion": {
+      "tp": 148,
+      "tn": 136,
+      "fp": 14,
+      "fn": 0
+    },
+    "per_class_f1": {
+      "healthy": 0.9510489510489509,
+      "degraded_10s": 0.0,
+      "failed_crash": 1.0,
+      "failed_slow": 1.0,
+      "failed_byzantine": 1.0,
+      "failed_partition": 1.0
+    },
+    "inference_time_ms": 0.5685995089127713
+  },
+  "Vanilla LSTM": {
+    "accuracy": 0.4966442953020134,
+    "binary_accuracy": 0.4966442953020134,
+    "precision": 0.4966442953020134,
+    "recall": 1.0,
+    "f1": 0.6636771300448431,
+    "false_positive_rate": 1.0,
+    "false_negative_rate": 0.0,
+    "confusion": {
+      "tp": 148,
+      "tn": 0,
+      "fp": 150,
+      "fn": 0
+    },
+    "per_class_f1": {
+      "healthy": 0.0,
+      "degraded_20s": 0.0,
+      "failed_crash": 1.0,
+      "failed_slow": 1.0,
+      "failed_byzantine": 1.0,
+      "failed_partition": 1.0
+    },
+    "inference_time_ms": 0.12252314778782378
+  }
+}

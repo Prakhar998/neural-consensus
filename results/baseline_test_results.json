@@ -1,0 +1,18 @@
+{
+  "threshold": {
+    "accuracy": 0.735,
+    "f1": 0.63161325199
+  },
+  "phi_accrual": {
+    "accuracy": 0.648,
+    "f1": 0.5133550951619268
+  },
+  "random_forest": {
+    "accuracy": 0.838,
+    "f1": 0.8252913553292196
+  },
+  "vanilla_lstm": {
+    "accuracy": 0.839,
+    "f1": 0.8358535177980709
+  }
+}
