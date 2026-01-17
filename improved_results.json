@@ -1,65 +1,75 @@
 {
-  "timestamp": "2026-01-13T14:25:38.186009",
-  "improvements": [
-    "Residual connections",
-    "Attention mechanism",
-    "Focal loss for class imbalance",
-    "Mixup data augmentation",
-    "Adam optimizer with weight decay",
-    "Ensemble of multiple architectures"
-  ],
-  "uci_ai4i": {
-    "ProactiveGuard (Improved)": {
-      "accuracy": 0.864,
-      "macro_f1": 0.637329241070096,
-      "weighted_f1": 0.8703459135223319
-    },
-    "ProactiveGuard (Ensemble)": {
-      "accuracy": 0.913,
-      "macro_f1": 0.6595735929514488,
-      "weighted_f1": 0.9028680440065913
-    },
-    "MLP (sklearn)": {
-      "accuracy": 0.903,
-      "macro_f1": 0.6219705061795054,
-      "weighted_f1": 0.8882015616609082
+  "uci_smote": {
+    "ProactiveGuard (Ens.)": {
+      "accuracy": 0.8005,
+      "macro_f1": 0.3828779256192534,
+      "weighted_f1": 0.8681346710545806
     },
     "Random Forest": {
-      "accuracy": 0.905,
-      "macro_f1": 0.6502433389404841,
-      "weighted_f1": 0.8987752402365178
+      "accuracy": 0.9675,
+      "macro_f1": 0.5830084734427458,
+      "weighted_f1": 0.9720418176437544
     },
     "Gradient Boosting": {
-      "accuracy": 0.917,
-      "macro_f1": 0.6744522287589668,
-      "weighted_f1": 0.9130447722098167
+      "accuracy": 0.977,
+      "macro_f1": 0.6434338969685144,
+      "weighted_f1": 0.9802032402486749
+    },
+    "MLP": {
+      "accuracy": 0.953,
+      "macro_f1": 0.5452420353994877,
+      "weighted_f1": 0.963512337382059
     }
   },
-  "nasa_cmapss": {
-    "ProactiveGuard (Improved)": {
-      "accuracy": 0.6851305334846765,
-      "macro_f1": 0.6140648692501071,
-      "weighted_f1": 0.6658683090272262
-    },
-    "ProactiveGuard (Ensemble)": {
-      "accuracy": 0.6985244040862656,
-      "macro_f1": 0.6288423403848363,
-      "weighted_f1": 0.6835429459166508
-    },
-    "MLP (sklearn)": {
-      "accuracy": 0.6808172531214529,
-      "macro_f1": 0.5834678753310961,
-      "weighted_f1": 0.6556000241772296
+  "etcd": {
+    "ProactiveGuard": {
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fnr": 0.0
     },
     "Random Forest": {
-      "accuracy": 0.6812712826333712,
-      "macro_f1": 0.5974825772276353,
-      "weighted_f1": 0.6545865494818631
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fnr": 0.0
     },
-    "Gradient Boosting": {
-      "accuracy": 0.6724177071509648,
-      "macro_f1": 0.5861586002091652,
-      "weighted_f1": 0.6491379817455485
+    "Phi Accrual": {
+      "accuracy": 0.989,
+      "recall": 0.98,
+      "f1": 0.8990825688073395,
+      "fnr": 0.020000000000000018
+    }
+  },
+  "bootstrap": {
+    "proactiveguard": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "recall": {
+        "mean": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "f1": {
+        "mean": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      }
+    },
+    "random_forest": {
+      "accuracy": {
+        "mean": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      },
+      "recall": {
+        "mean": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0
+      }
     }
   }
 }
